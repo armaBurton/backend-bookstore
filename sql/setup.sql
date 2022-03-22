@@ -2,7 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS publishers CASCADE;
 DROP TABLE IF EXISTS author CASCADE;
-DROP TABLE IF EXISTS book CASCADE;
+DROP TABLE IF EXISTS books CASCADE;
 DROP TABLE IF EXISTS review CASCADE;
 DROP TABLE IF EXISTS reviewer CASCADE;
 DROP TABLE IF EXISTS author_book CASCADE;
@@ -36,20 +36,19 @@ VALUES
 ('Neal Town Stephenson', '1959-10-31', 'Fort Meade, MD');
 
 
-CREATE TABLE book (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE books (
+    book_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     publisher_id BIGINT NOT NULL,
-    book_id BIGINT NOT NULL,
     review_id BIGINT,
     title TEXT NOT NULL,
     released INT NOT NULL
 );
 
 INSERT INTO
-book (title, released, publisher_id, book_id, review_id)
+books (title, released, publisher_id, review_id)
 VALUES
-('Mice and Men', 1937, 1, 1, 1),
-('The Diamond Age: Or, A Young Lady''s Illustrated Primer',  1995, 2, 2, 2);
+('Mice and Men', 1937, 1, 1),
+('The Diamond Age: Or, A Young Lady''s Illustrated Primer',  1995, 2, 2);
 
 
 CREATE TABLE review (

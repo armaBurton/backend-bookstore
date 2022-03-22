@@ -22,4 +22,13 @@ describe('backend-bookstore routes', () => {
       expect.objectContaining({})
     ]));
   });
+
+  it('returns an array of books', async() => {
+    const res = await request(app)
+      .get('/api/v1/books');
+
+    expect(res.body).toEqual(expect.arrayContaining([
+      expect.objectContaining({})
+    ]));
+  });
 });
