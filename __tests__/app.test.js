@@ -14,12 +14,21 @@ describe('backend-bookstore routes', () => {
   });
 
   it('returns an array of publishers', async() => {
-    const expected = await Publisher.getAll();
+    // const expected = await Publisher.getAllPublishers();
     const res = await request(app)
       .get('/api/v1/publishers');
 
-    expect(res.body).toEqual(expected.arrayContaining([
-      expect.not.objectContaining({})
+    expect(res.body).toEqual(expect.arrayContaining([
+      expect.objectContaining({})
+    ]));
+  });
+
+  it('returns an array of books', async() => {
+    const res = await request(app)
+      .get('/api/v1/books');
+
+    expect(res.body).toEqual(expect.arrayContaining([
+      expect.objectContaining({})
     ]));
   });
 });
