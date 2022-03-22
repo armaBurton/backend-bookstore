@@ -1,6 +1,6 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
-DROP TABLE IF EXISTS publisher CASCADE;
+DROP TABLE IF EXISTS publishers CASCADE;
 DROP TABLE IF EXISTS author CASCADE;
 DROP TABLE IF EXISTS book CASCADE;
 DROP TABLE IF EXISTS review CASCADE;
@@ -8,24 +8,25 @@ DROP TABLE IF EXISTS reviewer CASCADE;
 DROP TABLE IF EXISTS author_book CASCADE;
 
 
-CREATE TABLE publisher (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE publishers (
+    publisher_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
-    city TEXT NOT NULL,
-    country TEXT NOT NULL
+    city TEXT,
+    state TEXT,
+    country TEXT
 );
 
 INSERT INTO 
-publisher (name, city, country)
+publishers (name, city, state, country)
 VALUES
-('Tor Books', 'New York City', 'USA'),
-('Penguin Random House Company', 'New York City', 'USA');
+('Tor Books', 'New York City', 'New York', 'USA'),
+('Penguin Random House Company', 'New York City', 'New York', 'USA');
 
 CREATE TABLE author (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
-    date_of_birth DATE NOT NULL,
-    place_of_birth TEXT NOT NULL
+    date_of_birth DATE,
+    place_of_birth TEXT
 );
 
 INSERT INTO
@@ -55,15 +56,16 @@ CREATE TABLE review (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     review_id BIGINT NOT NULL,
     reviewer_id BIGINT NOT NULL,
-    review TEXT NOT NULL,
-    rating INT NOT NULL
+    review CHAR(140) NOT NULL,
+    rating INT NOT NULL,
+    book_id BIGINT NOT NULL
 );
 
 INSERT INTO
-review (review_id, reviewer_id, review, rating)
+review (review_id, reviewer_id, review, rating, book_id)
 VALUES
-(1, 1, 'this is a review', 5),
-(2, 2, 'Flank ham shankle, pork belly shank filet mignon pig tongue. Flank leberkas turducken, cupim filet mignon jerky beef ribs bresaola meatloaf tri-tip t-bone. Prosciutto porchetta filet mignon chuck meatloaf, beef ribs turkey alcatra pastrami ribeye. Jerky spare ribs ham hock, hamburger pork chop short ribs jowl leberkas corned beef. Alcatra beef chislic bresaola chicken. Meatloaf salami prosciutto brisket turkey. Flank pig ham hock sirloin, corned beef andouille picanha fatback ground round porchetta.', 4);
+(1, 1, 'Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials, the number of actual characters matters.', 5, 1),
+(2, 2, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma', 4, 2);
 
 CREATE TABLE reviewer (
     reviewer_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
