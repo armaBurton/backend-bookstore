@@ -1,6 +1,6 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
-DROP TABLE IF EXISTS publisher CASCADE;
+DROP TABLE IF EXISTS publishers CASCADE;
 DROP TABLE IF EXISTS author CASCADE;
 DROP TABLE IF EXISTS book CASCADE;
 DROP TABLE IF EXISTS review CASCADE;
@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS reviewer CASCADE;
 DROP TABLE IF EXISTS author_book CASCADE;
 
 
-CREATE TABLE publisher (
+CREATE TABLE publishers (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
     city TEXT,
@@ -17,7 +17,7 @@ CREATE TABLE publisher (
 );
 
 INSERT INTO 
-publisher (name, city, state, country)
+publishers (name, city, state, country)
 VALUES
 ('Tor Books', 'New York City', 'New York', 'USA'),
 ('Penguin Random House Company', 'New York City', 'New York', 'USA');
