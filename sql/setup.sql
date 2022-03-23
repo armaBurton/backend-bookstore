@@ -3,7 +3,7 @@
 DROP TABLE IF EXISTS publishers CASCADE;
 DROP TABLE IF EXISTS authors CASCADE;
 DROP TABLE IF EXISTS books CASCADE;
-DROP TABLE IF EXISTS review CASCADE;
+DROP TABLE IF EXISTS reviews CASCADE;
 DROP TABLE IF EXISTS reviewers CASCADE;
 DROP TABLE IF EXISTS author_book CASCADE;
 
@@ -51,20 +51,19 @@ VALUES
 ('The Diamond Age: Or, A Young Lady''s Illustrated Primer',  1995, 2, 2);
 
 
-CREATE TABLE review (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    review_id BIGINT NOT NULL,
+CREATE TABLE reviews (
+    review_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     reviewer_id BIGINT NOT NULL,
-    review CHAR(140) NOT NULL,
+    review_text CHAR(140) NOT NULL,
     rating INT NOT NULL,
     book_id BIGINT NOT NULL
 );
 
 INSERT INTO
-review (review_id, reviewer_id, review, rating, book_id)
+reviews (reviewer_id, review_text, rating, book_id)
 VALUES
-(1, 1, 'Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials, the number of actual characters matters.', 5, 1),
-(2, 2, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma', 4, 2);
+(1, 'Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials, the number of actual characters matters.', 5, 1),
+(2, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma', 4, 2);
 
 CREATE TABLE reviewers (
     reviewer_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
