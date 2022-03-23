@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS publishers CASCADE;
 DROP TABLE IF EXISTS authors CASCADE;
 DROP TABLE IF EXISTS books CASCADE;
 DROP TABLE IF EXISTS review CASCADE;
-DROP TABLE IF EXISTS reviewer CASCADE;
+DROP TABLE IF EXISTS reviewers CASCADE;
 DROP TABLE IF EXISTS author_book CASCADE;
 
 
@@ -66,7 +66,7 @@ VALUES
 (1, 1, 'Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials, the number of actual characters matters.', 5, 1),
 (2, 2, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma', 4, 2);
 
-CREATE TABLE reviewer (
+CREATE TABLE reviewers (
     reviewer_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
     company TEXT NOT NULL
@@ -74,7 +74,7 @@ CREATE TABLE reviewer (
 );
 
 INSERT INTO
-reviewer (name, company)
+reviewers (name, company)
 VALUES
 ('Yon Yonson', 'Ratty Comic Books'),
 ('Betsy Bonsei', 'TV Guide Dinner Reviews');

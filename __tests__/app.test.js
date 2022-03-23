@@ -40,4 +40,13 @@ describe('backend-bookstore routes', () => {
       expect.objectContaining({})
     ]));
   });
+
+  it('returns an array of reviewers', async() => {
+    const res = await request(app)
+      .get('/api/v1/reviewers');
+
+    expect(res.body).toEqual(expect.arrayContaining([
+      expect.objectContaining({})
+    ]));
+  });
 });
