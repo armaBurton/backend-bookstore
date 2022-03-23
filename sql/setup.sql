@@ -1,7 +1,7 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS publishers CASCADE;
-DROP TABLE IF EXISTS author CASCADE;
+DROP TABLE IF EXISTS authors CASCADE;
 DROP TABLE IF EXISTS books CASCADE;
 DROP TABLE IF EXISTS review CASCADE;
 DROP TABLE IF EXISTS reviewer CASCADE;
@@ -22,15 +22,15 @@ VALUES
 ('Tor Books', 'New York City', 'New York', 'USA'),
 ('Penguin Random House Company', 'New York City', 'New York', 'USA');
 
-CREATE TABLE author (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CREATE TABLE authors (
+    author_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
     date_of_birth DATE,
     place_of_birth TEXT
 );
 
 INSERT INTO
-author (name, date_of_birth, place_of_birth)
+authors (name, date_of_birth, place_of_birth)
 VALUES
 ('John Steinback', '1953-11-12', 'Salinas, CA' ),
 ('Neal Town Stephenson', '1959-10-31', 'Fort Meade, MD');
@@ -81,8 +81,8 @@ VALUES
 
 
 CREATE TABLE author_book (
-    book_id BIGINT REFERENCES book(id),
-    author_id BIGINT REFERENCES author(id)
+    book_id BIGINT REFERENCES books(book_id),
+    author_id BIGINT REFERENCES authors(author_id)
 );
 
 -- INSERT INTO

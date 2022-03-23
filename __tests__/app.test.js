@@ -31,4 +31,13 @@ describe('backend-bookstore routes', () => {
       expect.objectContaining({})
     ]));
   });
+
+  it('returns an array of authors', async() => {
+    const res = await request(app)
+      .get('/api/v1/authors');
+
+    expect(res.body).toEqual(expect.arrayContaining([
+      expect.objectContaining({})
+    ]));
+  });
 });
