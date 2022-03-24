@@ -63,12 +63,23 @@ describe('backend-bookstore routes', () => {
     expect(res.body).toEqual({ ...expected, bookId: expect.any(String), publisherId: expect.any(String), reviewId: expect.any(String) });
   });
 
+
   it('returns an array of authors', async () => {
     const res = await request(app).get('/api/v1/authors');
 
     expect(res.body).toEqual(
       expect.arrayContaining([expect.objectContaining({})])
     );
+  });
+
+  it('create an author', async () => {
+    const expected = {
+      name: 'bob',
+      dateOfBirth: '1970-11-25',
+      placeOfBirth: 'Rio'
+    };
+    const res = await request(app).post('/api/v1/authors').send(expected);
+    expect(res.body).toEqual({ ...expected, authorId: expect.any(String), dateOfBirth: expect.any(String) });
   });
 
   it('returns a author with matching ID', async () => {
