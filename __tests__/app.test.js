@@ -29,6 +29,18 @@ describe('backend-bookstore routes', () => {
     );
   });
 
+  it('creates a publisher', async () => {
+    const expected = {
+      publisherId: '3',
+      name: 'john',
+      city: 'kansas city',
+      state: 'MO',
+      country: 'Peru'
+    }
+    const res = await request(app).post('/api/v1/publishers').send(expected);
+    expect(res.body).toEqual(expected);
+  });
+
 
 
   it('returns an array of books', async () => {
