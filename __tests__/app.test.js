@@ -39,11 +39,26 @@ describe('backend-bookstore routes', () => {
     );
   });
 
+  it('returns a book with matching ID', async () => {
+    const res = await request(app).get('/api/v1/books/1');
+    expect(res.body).toEqual(
+      expect.objectContaining({})
+    );
+  });
+
+
   it('returns an array of authors', async () => {
     const res = await request(app).get('/api/v1/authors');
 
     expect(res.body).toEqual(
       expect.arrayContaining([expect.objectContaining({})])
+    );
+  });
+
+  it('returns a author with matching ID', async () => {
+    const res = await request(app).get('/api/v1/authors/1');
+    expect(res.body).toEqual(
+      expect.objectContaining({})
     );
   });
 
@@ -55,6 +70,12 @@ describe('backend-bookstore routes', () => {
     );
   });
 
+  it('returns a reviewer with matching ID', async () => {
+    const res = await request(app).get('/api/v1/reviewers/1');
+    expect(res.body).toEqual(
+      expect.objectContaining({})
+    );
+  });
 
   it('returns an array of top 100 reviews', async () => {
 
