@@ -35,7 +35,7 @@ describe('backend-bookstore routes', () => {
       country: 'Peru',
     };
     const res = await request(app).post('/api/v1/publishers').send(expected);
-    expect(res.body).toEqual(expected);
+    expect(res.body).toEqual({ ...expected, publisherId: expect.any(String) });
   });
 
   it('returns an array of books', async () => {
@@ -54,14 +54,13 @@ describe('backend-bookstore routes', () => {
   it('create a book', async () => {
     const expected = {
       bookId: '3',
-      publisherId: '3',
+      publisherId: '4',
       reviewId:'3',
       title: 'grokking alogorithims',
       released: 2012,
     };
     const res = await request(app).post('/api/v1/books').send(expected);
-    console.log(res.body);
-    expect(res.body).toEqual(expected);
+    expect(res.body).toEqual({ ...expected, bookId: expect.any(String), publisherId: expect.any(String), reviewId: expect.any(String) });
   });
 
   it('returns an array of authors', async () => {
