@@ -55,7 +55,7 @@ describe('backend-bookstore routes', () => {
     const expected = {
       bookId: '3',
       publisherId: '3',
-      reviewId: expect.anything(''),
+      reviewId:'3',
       title: 'grokking alogorithims',
       released: 2012,
     };

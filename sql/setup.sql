@@ -38,8 +38,8 @@ VALUES
 
 CREATE TABLE books (
     book_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    publisher_id BIGINT NOT NULL,
-    review_id BIGINT,
+    publisher_id BIGINT REFERENCES publishers(publisher_id) NOT NULL,
+    review_id BIGINT REFERENCES reviews(review_id),
     title TEXT NOT NULL,
     released INT NOT NULL
 );
@@ -53,10 +53,10 @@ VALUES
 
 CREATE TABLE reviews (
     review_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    reviewer_id BIGINT NOT NULL,
+    reviewer_id BIGINT REFERENCES reviewers(reviewer_id) NOT NULL,
     review_text CHAR(140) NOT NULL,
     rating INT NOT NULL,
-    book_id BIGINT NOT NULL
+    book_id BIGINT REFERENCES books(book_id) NOT NULL
 );
 
 INSERT INTO
