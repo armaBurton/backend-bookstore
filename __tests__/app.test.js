@@ -75,11 +75,11 @@ describe('backend-bookstore routes', () => {
   it('create an author', async () => {
     const expected = {
       name: 'bob',
-      dateOfBirth: '1970-11-25',
+      dateOfBirth: '4-24-1970',
       placeOfBirth: 'Rio'
     };
     const res = await request(app).post('/api/v1/authors').send(expected);
-    expect(res.body).toEqual({ ...expected, authorId: expect.any(String), dateOfBirth: expect.any(String) });
+    expect(res.body).toEqual({ ...expected, authorId: expect.any(String) });
   });
 
   it('returns a author with matching ID', async () => {
