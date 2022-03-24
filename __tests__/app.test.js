@@ -39,6 +39,14 @@ describe('backend-bookstore routes', () => {
     );
   });
 
+  it('returns a book with matching ID', async () => {
+    const res = await request(app).get('/api/v1/books/1');
+    expect(res.body).toEqual(
+      expect.objectContaining({})
+    );
+  });
+  
+
   it('returns an array of authors', async () => {
     const res = await request(app).get('/api/v1/authors');
 
