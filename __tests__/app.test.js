@@ -21,12 +21,9 @@ describe('backend-bookstore routes', () => {
     );
   });
 
-  
   it('returns a publisher with matching ID', async () => {
     const res = await request(app).get('/api/v1/publishers/1');
-    expect(res.body).toEqual(
-      expect.objectContaining({})
-    );
+    expect(res.body).toEqual(expect.objectContaining({}));
   });
 
   it('creates a publisher', async () => {
@@ -35,13 +32,11 @@ describe('backend-bookstore routes', () => {
       name: 'john',
       city: 'kansas city',
       state: 'MO',
-      country: 'Peru'
-    }
+      country: 'Peru',
+    };
     const res = await request(app).post('/api/v1/publishers').send(expected);
     expect(res.body).toEqual(expected);
   });
-
-
 
   it('returns an array of books', async () => {
     const res = await request(app).get('/api/v1/books');
@@ -53,11 +48,21 @@ describe('backend-bookstore routes', () => {
 
   it('returns a book with matching ID', async () => {
     const res = await request(app).get('/api/v1/books/1');
-    expect(res.body).toEqual(
-      expect.objectContaining({})
-    );
+    expect(res.body).toEqual(expect.objectContaining({}));
   });
 
+  it('create a book', async () => {
+    const expected = {
+      bookId: '3',
+      publisherId: '3',
+      reviewId: expect.anything(''),
+      title: 'grokking alogorithims',
+      released: 2012,
+    };
+    const res = await request(app).post('/api/v1/books').send(expected);
+    console.log(res.body);
+    expect(res.body).toEqual(expected);
+  });
 
   it('returns an array of authors', async () => {
     const res = await request(app).get('/api/v1/authors');
@@ -69,9 +74,7 @@ describe('backend-bookstore routes', () => {
 
   it('returns a author with matching ID', async () => {
     const res = await request(app).get('/api/v1/authors/1');
-    expect(res.body).toEqual(
-      expect.objectContaining({})
-    );
+    expect(res.body).toEqual(expect.objectContaining({}));
   });
 
   it('returns an array of reviewers', async () => {
@@ -84,17 +87,13 @@ describe('backend-bookstore routes', () => {
 
   it('returns a reviewer with matching ID', async () => {
     const res = await request(app).get('/api/v1/reviewers/1');
-    expect(res.body).toEqual(
-      expect.objectContaining({})
-    );
+    expect(res.body).toEqual(expect.objectContaining({}));
   });
 
   it('returns an array of top 100 reviews', async () => {
-
     const res = await request(app).get('/api/v1/reviews');
     expect(res.body).toEqual(
       expect.arrayContaining([expect.objectContaining({})])
     );
   });
-
 });
