@@ -101,6 +101,20 @@ describe('backend-bookstore routes', () => {
     expect(res.body).toEqual(expect.objectContaining({}));
   });
 
+  it('creates a reviewer', async() => {
+    const expected = {
+      name: 'Jack Beanstalk',
+      company: 'Green Island Inc'
+    };
+
+    const res = await request(app)
+      .post('/api/v1/reviewers')
+      .send(expected);
+
+    expect(res.body).toEqual({ ...expected, reviewerId: expect.any(String) });
+  });
+
+  
   it('returns an array of top 100 reviews', async () => {
     const res = await request(app).get('/api/v1/reviews');
     expect(res.body).toEqual(
