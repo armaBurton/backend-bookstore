@@ -60,6 +60,7 @@ CREATE TABLE reviews (
 
 
 CREATE TABLE author_book (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     book_id BIGINT REFERENCES books(book_id),
     author_id BIGINT REFERENCES authors(author_id)
 );
@@ -75,6 +76,12 @@ publishers (name, city, state, country)
 VALUES
 ('Tor Books', 'New York City', 'New York', 'USA'),
 ('Penguin Random House Company', 'New York City', 'New York', 'USA');
+
+INSERT INTO
+author_book (book_id, author_id)
+VALUES
+(1, 1),
+(2, 2);
 
 INSERT INTO
 authors (name, date_of_birth, place_of_birth)

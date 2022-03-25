@@ -55,12 +55,11 @@ describe('backend-bookstore routes', () => {
     const expected = {
       bookId: '3',
       publisherId: '4',
-      reviewId:'3',
       title: 'grokking alogorithims',
       released: 2012,
     };
     const res = await request(app).post('/api/v1/books').send(expected);
-    expect(res.body).toEqual({ ...expected, bookId: expect.any(String), publisherId: expect.any(String), reviewId: expect.any(String) });
+    expect(res.body).toEqual({ ...expected, bookId: expect.any(String), publisherId: expect.any(String) });
   });
 
 
