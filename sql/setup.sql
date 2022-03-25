@@ -73,7 +73,7 @@ VALUES
 ('Dinosaur Jim', '1825-09-09', 'Hot Lava, WY');
 
 INSERT INTO author_book(book_id, author_id)
-VALUES (2, 2), (3, 3);
+VALUES (1,1), (2, 2), (3, 3), (2, 3);
 
 INSERT INTO
 reviews (reviewer_id, review_text, rating, book_id)
