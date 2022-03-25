@@ -86,7 +86,7 @@ INSERT INTO
 reviewers (name, company)
 VALUES
 ('Yon Yonson', 'Ratty Comic Books'),
-('Yon Yonson', 'Ratty Comic Books'),
+('Benny Yonson', 'Berry Comic Books'),
 ('Betsy Bonsei', 'TV Guide Dinner Reviews');
 
 

@@ -114,7 +114,22 @@ describe('backend-bookstore routes', () => {
     expect(res.body).toEqual({ ...expected, reviewerId: expect.any(String) });
   });
 
-  
+  it('updates a reviewer by Id', async() => {
+    const expected = {
+      reviewerId: expect.any(String),
+      name: 'Patrick Podlesnik',
+      company: 'Ratty Comic Books'
+    };
+
+    const res = await request(app)
+      .put('/api/v1/reviewers/1')
+      .send({
+        name: 'Patrick Podlesnik',
+      });
+
+    expect(res.body).toEqual(expected);
+  });
+
   it('returns an array of top 100 reviews', async () => {
     const res = await request(app).get('/api/v1/reviews');
     expect(res.body).toEqual(
