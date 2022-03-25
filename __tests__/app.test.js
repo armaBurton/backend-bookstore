@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const { response } = require('../lib/app');
 
 describe('backend-bookstore routes', () => {
   beforeEach(() => {
@@ -55,12 +56,12 @@ describe('backend-bookstore routes', () => {
     const expected = {
       bookId: '3',
       publisherId: '4',
-      reviewId:'3',
+      // reviewId:'3',
       title: 'grokking alogorithims',
       released: 2012,
     };
     const res = await request(app).post('/api/v1/books').send(expected);
-    expect(res.body).toEqual({ ...expected, bookId: expect.any(String), publisherId: expect.any(String), reviewId: expect.any(String) });
+    expect(res.body).toEqual({ ...expected, bookId: expect.any(String), publisherId: expect.any(String) });
   });
 
 
@@ -105,5 +106,20 @@ describe('backend-bookstore routes', () => {
     expect(res.body).toEqual(
       expect.arrayContaining([expect.objectContaining({})])
     );
+  });
+
+  it('creates a review', async () => {
+    const expected = {
+      reviewerId: '1',
+      reviewText: 'This book is amazing!',
+      bookId: '1',
+      rating: 4
+    };
+
+    const res = await request(app)
+      .post('/api/v1/reviews')
+      .send(expected);
+    
+    expect(res.body).toEqual({ ...expected, reviewerId: expect.any(String), bookId: expect.any(String), reviewId: expect.any(String) });
   });
 });
