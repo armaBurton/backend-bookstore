@@ -62,6 +62,7 @@ books (title, released, publisher_id)
 VALUES
 ('Mice and Men', 1937, 1),
 ('The Diamond Age: Or, A Young Lady''s Illustrated Primer',  1995, 2),
+('The Windup Girl', 2009, 2),
 ('Savage Hearts',  2022, 3);
 
 INSERT INTO
