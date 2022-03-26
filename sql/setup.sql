@@ -55,7 +55,8 @@ publishers (name, city, state, country)
 VALUES
 ('Tor Books', 'New York City', 'New York', 'USA'),
 ('Penguin Random House Company', 'New York City', 'New York', 'USA'),
-('Dark Horse Comics', 'Portland', 'Oregon', 'USA');
+('Dark Horse Comics', 'Portland', 'Oregon', 'USA'),
+('Baen Books', 'Riverdale', 'Manitoba', 'Canada');
 
 INSERT INTO
 books (title, released, publisher_id)
