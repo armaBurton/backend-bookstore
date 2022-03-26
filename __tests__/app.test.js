@@ -2,7 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
-const { response } = require('../lib/app');
+const Reviewer = require('../lib/models/Reviewer');
 
 describe('backend-bookstore routes', () => {
   beforeEach(() => {
@@ -99,6 +99,54 @@ describe('backend-bookstore routes', () => {
   it('returns a reviewer with matching ID', async () => {
     const res = await request(app).get('/api/v1/reviewers/1');
     expect(res.body).toEqual(expect.objectContaining({}));
+  });
+
+  it('creates a reviewer', async() => {
+    const expected = {
+      name: 'Jack Beanstalk',
+      company: 'Green Island Inc'
+    };
+
+    const res = await request(app)
+      .post('/api/v1/reviewers')
+      .send(expected);
+
+    expect(res.body).toEqual({ ...expected, reviewerId: expect.any(String) });
+  });
+
+  it('updates a reviewer by Id', async() => {
+    const expected = {
+      reviewerId: expect.any(String),
+      name: 'Patrick Podlesnik',
+      company: 'Ratty Comic Books'
+    };
+
+    const res = await request(app)
+      .put('/api/v1/reviewers/1')
+      .send({
+        name: 'Patrick Podlesnik',
+      });
+
+    expect(res.body).toEqual(expected);
+  });
+
+  it('deletes a review if there are no reviews', async() => {
+    const reviewer = await Reviewer.insertReviewer({
+      name: 'Jacky Twins',
+      company: 'Penguins Publishing Company'
+    });
+
+    const expected = {
+      reviewerId: expect.any(String),
+      name: 'Jacky Twins',
+      company: 'Penguins Publishing Company'
+    };
+    // const expected = await Reviewer.getReviewerById(reviewer.reviewerId);
+    
+    const res = await request(app)
+      .delete(`/api/v1/reviewers/${reviewer.reviewerId}`);
+
+    expect(res.body).toEqual(expected);
   });
 
   it('returns an array of top 100 reviews', async () => {
