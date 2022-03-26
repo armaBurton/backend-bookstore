@@ -23,8 +23,26 @@ describe('backend-bookstore routes', () => {
   });
 
   it('returns a publisher with matching ID', async () => {
+    const expected = {
+      id: '2',
+      name: 'Penguin Random House Company',
+      city: 'New York City',
+      state: 'New York',
+      country: 'USA',
+      books: [
+        {
+          bookId: '2',
+          title: expect.any(String)
+        },
+        {
+          bookId: '3',
+          title: 'The Windup Girl'
+        }
+      ]
+    };
+    
     const res = await request(app).get('/api/v1/publishers/2');
-    expect(res.body).toEqual(expect.objectContaining({}));
+    expect(res.body).toEqual(expected);
   });
 
   it('creates a publisher', async () => {
