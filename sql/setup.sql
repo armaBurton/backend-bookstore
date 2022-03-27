@@ -80,9 +80,9 @@ VALUES (1,1), (2, 2), (3, 3), (2, 3);
 INSERT INTO
 reviews (reviewer_id, review_text, rating, book_id)
 VALUES
-(1, 'Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials, the number of actual characters matters.', 5, 1),
-(2, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma', 4, 2),
-(1, 'It was okay, Nothing to write about', 2, 3);
+('1', 'Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials, the number of actual characters matters.', 5, 1),
+('2', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma', 4, 2),
+('1', 'It was okay, Nothing to write about', 2, 3);
 
 INSERT INTO
 reviewers (name, company)
