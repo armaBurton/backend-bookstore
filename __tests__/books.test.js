@@ -59,6 +59,7 @@ describe('backend-bookstore routes', () => {
 
   it('returns a book with matching ID', async () => {
     const res = await request(app).get('/api/v1/books/1');
+
     expect(res.body).toEqual(expect.objectContaining({}));
   });
 
@@ -71,6 +72,7 @@ describe('backend-bookstore routes', () => {
       released: 2012,
     };
     const res = await request(app).post('/api/v1/books').send(expected);
+    
     expect(res.body).toEqual({ ...expected, bookId: expect.any(String), publisherId: expect.any(String) });
   });
 
