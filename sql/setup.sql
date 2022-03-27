@@ -7,7 +7,6 @@ DROP TABLE IF EXISTS reviews CASCADE;
 DROP TABLE IF EXISTS reviewers CASCADE;
 DROP TABLE IF EXISTS author_book CASCADE;
 
-
 CREATE TABLE publishers (
     publisher_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
@@ -90,5 +89,3 @@ VALUES
 ('Yon Yonson', 'Ratty Comic Books'),
 ('Benny Yonson', 'Berry Comic Books'),
 ('Betsy Bonsei', 'TV Guide Dinner Reviews');
-
-
