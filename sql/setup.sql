@@ -35,10 +35,9 @@ CREATE TABLE author_book (
     book_id BIGINT REFERENCES books(book_id)
 );
 
-
 CREATE TABLE reviews (
     review_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    reviewer_id BIGINT,
+    reviewer_id BIGINT NOT NULL,
     review_text VARCHAR(140) NOT NULL,
     rating INT NOT NULL,
     book_id BIGINT NOT NULL
@@ -55,7 +54,8 @@ publishers (name, city, state, country)
 VALUES
 ('Tor Books', 'New York City', 'New York', 'USA'),
 ('Penguin Random House Company', 'New York City', 'New York', 'USA'),
-('Dark Horse Comics', 'Portland', 'Oregon', 'USA');
+('Dark Horse Comics', 'Portland', 'Oregon', 'USA'),
+('Baen Books', 'Riverdale', 'Manitoba', 'Canada');
 
 INSERT INTO
 books (title, released, publisher_id)
@@ -81,7 +81,8 @@ reviews (reviewer_id, review_text, rating, book_id)
 VALUES
 (1, 'Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials, the number of actual characters matters.', 5, 1),
 (2, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et ma', 4, 2),
-(1, 'It was okay, Nothing to write about', 2, 3);
+(1, 'It was okay, Nothing to write about', 2, 3),
+(3, 'Almost as fun as watching paint dry', 2, 1);
 
 INSERT INTO
 reviewers (name, company)
